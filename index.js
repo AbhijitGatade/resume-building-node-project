@@ -10,7 +10,7 @@ app.use(bodyparser.json({limit:'5000mb'}));
 app.use(bodyparser.urlencoded({limit:'5000mb', extended: true}));
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/igapresume");
+mongoose.connect("mongodb+srv://igapabhijit:iGAP3479@igapcluster.y6ps2fj.mongodb.net/igapresume");
 const db = mongoose.connection;
 db.on("error", error=> console.log(error));
 db.on("open", ()=> console.log("Connection Established"));
@@ -43,14 +43,6 @@ app.use("/resume",require("./routes/resume"));
 app.use("/information",require("./routes/information"));
 
 
-
-
-
-
-
-
-
-
-app.listen(8081, function(){
+app.listen((process.env.PORT || 3000), function(){
     console.log("Node Server Started");
 })
